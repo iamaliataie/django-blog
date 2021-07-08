@@ -16,8 +16,8 @@
                 <a href="{% url 'post-delete' object.id %}" class="btn btn-danger btn-sm">Delete</a>
                 {% endif %}
                 <hr>
-                <h2>{{ object.title }}</h2>
-                <p>{{ object.content }}</p>
+                <h4>{{ object.title }}</h4>
+                <p class="text-justify">{{ object.content }}</p>
             </div>
         </div>
     </div>

@@ -13,7 +13,7 @@
                 <a href="{% url 'user-posts' post.author %}" class="mr-2">{{ post.author }}</a>
                 <small>{{ post.date_posted|date:"F d, Y" }}</small>
                 <hr>
-                <h2><a href="{% url 'post-detail' post.id %}">{{post.title}}</a></h2>
+                <h4><a href="{% url 'post-detail' post.id %}">{{post.title}}</a></h4>
                 <p>{{post.content|truncatewords:15}}</p>
             </div>
         </div>
