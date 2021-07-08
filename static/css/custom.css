@@ -1,0 +1,28 @@
+body{
+	background-color: #f3f3f3 !important;
+}
+
+a{
+	color: #000;
+	text-decoration: none !important;
+}
+
+.main-container{
+	min-height: 80vh;
+}
+
+.sticky-sidebar{
+	top: 10px;
+}
+
+.custom-pagination{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.footer{
+	height: 60px;
+	width: 100%;
+	line-height: 60px;
+}
