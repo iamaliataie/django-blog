@@ -31,10 +31,12 @@ class UserUpdateForm(forms.ModelForm):
     
     def clean_email(self):
         email = self.cleaned_data.get('email')
+        username = self.cleaned_data.get('username')
         email_exists = User.objects.filter(email=email).exists()
-        if email_exists:
+        if User.objects.filter(email=email, username=username).first():
+            return email
+        elif email_exists:
             raise forms.ValidationError('A user with that email already exists.')
-        return email
 
 
 class ProfileUpdateForm(forms.ModelForm):
