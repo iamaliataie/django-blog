@@ -1,6 +1,7 @@
 {% extends 'blog/base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
+{% load socialaccount %}
 
 {% block title %} Sign Up {% endblock %}
 {% block content %}
@@ -8,7 +9,9 @@
     <form method="POST">
         {% csrf_token %}
         <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Join Today</legend>
+            <legend class="border-bottom mb-4 pb-3">Join Today
+                <a href="{% provider_login_url 'google' %}" class="btn btn-danger float-right">Signup with Google</a>
+        </legend>
             {{ form|crispy }}
         </fieldset>
         <div class="form-group">

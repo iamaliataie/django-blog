@@ -16,10 +16,9 @@
     <form method="POST">
         {% csrf_token %}
         <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Sign In
-                    <a href="{% provider_login_url 'google' %}" class="btn btn-danger">Login with Google</a>
+            <legend class="border-bottom mb-4 pb-3">Sign In
+                    <a href="{% provider_login_url 'google' %}" class="btn btn-danger float-right">Login with Google</a>
             </legend>
-            
             {{ form|crispy }}
         </fieldset>
         <div class="form-group">
