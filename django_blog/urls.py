@@ -25,6 +25,7 @@ urlpatterns = [
 
     # blog urls
     path('', include('blog.urls')),
+    path('accounts/', include('allauth.urls')),
 
     # authenticating urls
     path('register/', user_views.register, name='register'),
