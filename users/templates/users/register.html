@@ -10,7 +10,7 @@
         {% csrf_token %}
         <fieldset class="form-group">
             <legend class="border-bottom mb-4 pb-3">Join Today
-                <a href="{% provider_login_url 'google' %}" class="btn btn-danger float-right">Signup with Google</a>
+                <a href="{% provider_login_url 'facebook'%}" class="btn btn-primary float-right">Sigup with Facebook</a>
         </legend>
             {{ form|crispy }}
         </fieldset>
