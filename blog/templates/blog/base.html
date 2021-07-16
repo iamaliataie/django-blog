@@ -1,5 +1,7 @@
 {% load static %}
-
+{% url 'blog-home' as home %}
+{% url 'login' as login %}
+{% url 'register' as register %}
 
 <!DOCTYPE html>
 <html>
@@ -20,7 +22,7 @@
 		  
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			  <ul class="navbar-nav mr-auto">
-				<li class="nav-item active">
+				<li class="nav-item {% if request.path == home %} active {% endif %}">
 				  <a class="nav-link" href="{% url 'blog-home' %}">Home <span class="sr-only">(current)</span></a>
 				</li>
 				<!-- <li class="nav-item">
@@ -37,10 +39,10 @@
 					<a class="nav-link" href="{% url 'logout' %}">Logout</a>
 				  </li>
 				  {% else %}
-				  <li class="nav-item">
+				  <li class="nav-item {% if request.path == login %} active {% endif %}">
 					<a class="nav-link" href="{% url 'login' %}">Sign In</a>
 				  </li>
-				  <li class="nav-item">
+				  <li class="nav-item {% if request.path == register %} active {% endif %}">
 					  <a class="nav-link" href="{% url 'register' %}">Register</a>
 					</li>
 				  {% endif %}

@@ -18,6 +18,7 @@
         <fieldset class="form-group">
             <legend class="border-bottom mb-4 pb-3">Sign In
                     <a href="{% provider_login_url 'google' %}" class="btn btn-danger float-right">Login with Google</a>
+                    <a href="{% provider_login_url 'facebook'%}" class="btn btn-primary float-right">Login with Facebook</a>
             </legend>
             {{ form|crispy }}
         </fieldset>
