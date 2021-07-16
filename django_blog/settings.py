@@ -181,5 +181,12 @@ SOCIALACCOUNT_PROVIDERS = {
         'APP': {
         }
     },
-    'facebook': {}
+    'facebook': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'APP': {
+        }
+    }
 }
