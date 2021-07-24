@@ -24,6 +24,7 @@ from users import views as user_views
 
 urlpatterns = [
     
+    path('i18n/', include('django.conf.urls.i18n')),
     path('accounts/', include('allauth.urls')),
 
     # Django admin panel urls

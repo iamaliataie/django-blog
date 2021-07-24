@@ -189,7 +189,3 @@ SOCIALACCOUNT_PROVIDERS = {
     },
     'facebook': {}
 }
-
-USE_I18N = True
-
-USE_L10N = True
