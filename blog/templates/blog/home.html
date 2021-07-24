@@ -1,7 +1,8 @@
 {% extends 'blog/base.html' %}
 {% load static %}
+{% load i18n %}
 
-{% block title %} Home {% endblock %}
+{% block title %} {% translate 'Home' %} {% endblock %}
 {% block content %}
 {% for post in posts %}
     <div class="border p-3 rounded mb-3 bg-light">
