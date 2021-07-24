@@ -1,19 +1,24 @@
 {% extends 'blog/base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
+{% load i18n %}
+{% url 'post-update' as update %}
+{% url 'post-create' as create %}
 
-{% block title %} Post {% endblock %}
+
+
+{% block title %}{% translate 'Post' %}{% endblock %}
 {% block content %}
 <div class="border rounded p-3 mb-3 bg-light">
     <form method="POST">
         {% csrf_token %}
         <fieldset class="form-group">
-            <legend class="border-bottom mb-4">New Post</legend>
+            <legend class="border-bottom mb-4">{% translate 'Post' %}</legend>
             {{ form|crispy }}
         </fieldset>
         <div class="form-group">
             <button class="btn btn-outline-info" type="submit">
-                Post
+                {% translate 'Post' %}
             </button>
         </div>
     </form>

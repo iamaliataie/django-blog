@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from users.models import Profile
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (ListView,
@@ -9,6 +9,7 @@ from django.views.generic import (ListView,
     )
 from .models import Post
 from django.contrib.auth.models import User
+from django.utils.translation import activate
 # Create your views here.
 
 class PostListView(ListView):
@@ -65,3 +66,4 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if post.author == self.request.user:
             return True
         return False
+

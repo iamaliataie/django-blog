@@ -10,8 +10,10 @@
                 <img src="{{ post.author.profile.image.url }}" alt="" width="100%" class="rounded-circle">
             </div>
             <div class="col-9 col-lg-10 col-md-10">
-                <a href="{% url 'user-posts' post.author %}" class="mr-2">{{ post.author }}</a>
-                <small>{{ post.date_posted|date:"F d, Y" }}</small>
+                <div class="d-flex align-items-center">
+                    <a href="{% url 'user-posts' post.author %}" class="mr-2 author">{{ post.author }}</a>
+                    <small>{{ post.date_posted|date:"F d, Y" }}</small>
+                </div>
                 <hr>
                 <h4><a href="{% url 'post-detail' post.id %}">{{post.title}}</a></h4>
                 <p>{{post.content|truncatewords:15}}</p>

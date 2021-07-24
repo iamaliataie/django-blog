@@ -1,0 +1,37 @@
+@font-face {
+    font-family: 'Shabnam';
+    src: url("../fonts/Shabnam-FD.ttf");
+}
+/* *{
+    font-family: 'Shabnam' !important;
+} */
+
+body{
+    direction: rtl;
+    text-align: right;
+    font-family: Shabnam;
+}
+
+ul.navbar-nav{
+    margin-left: auto !important;
+    margin-right: 0 !important;
+}
+
+ul.list-group{
+    padding: 0;
+}
+
+.facebook-login{
+    float: left !important;
+}
+
+.author.mr-2{
+    margin-right: 0 !important;
+    margin-left: .5rem !important;
+}
+
+@media (min-width: 576px) and (max-width: 767px){
+    .offset-sm-1{
+        margin-right: 8.333333%;
+    }
+}

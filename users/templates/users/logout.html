@@ -1,15 +1,16 @@
 {% extends 'blog/base.html' %}
 {% load static %}
+{% load i18n %}
 {% load crispy_forms_tags %}
 
-{% block title %} Logout {% endblock %}
+{% block title %} {% translate ' Logout' %} {% endblock %}
 {% block content %}
 <div class="border rounded p-3 mb-3 bg-light">
     <div>
-        <h4>You have been logged out</h4>
+        <h4>{% translate 'You have been logged out' %}</h4>
     </div>
     <div class="border-top pt-3">
-        <a href="{% url 'login' %}" class="text-info">Sign In Here</a>
+        <a href="{% url 'login' %}" class="text-info">{% translate 'Sign In Here' %}</a>
     </div>
 </div>
 {% endblock %}

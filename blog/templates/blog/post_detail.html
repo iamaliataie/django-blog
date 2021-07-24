@@ -1,5 +1,6 @@
 {% extends 'blog/base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %} {{ object.title }} {% endblock %}
 {% block content %}
@@ -12,8 +13,8 @@
                 <a href="{% url 'user-posts' object.author %}" class="mr-2">{{ object.author }}</a>
                 <small>{{ post.date_posted|date:"F d, Y" }}</small>
                 {% if object.author == request.user %}
-                <a href="{% url 'post-update' object.id %}" class="btn btn-secondary btn-sm">Update</a>
-                <a href="{% url 'post-delete' object.id %}" class="btn btn-danger btn-sm">Delete</a>
+                <a href="{% url 'post-update' object.id %}" class="btn btn-secondary btn-sm">{% translate 'Update' %}</a>
+                <a href="{% url 'post-delete' object.id %}" class="btn btn-danger btn-sm">{% translate 'Delete' %}</a>
                 {% endif %}
                 <hr>
                 <h4>{{ object.title }}</h4>

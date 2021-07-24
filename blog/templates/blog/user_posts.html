@@ -1,10 +1,11 @@
 {% extends 'blog/base.html' %}
 {% load static %}
+{% load i18n %}
 
-{% block title %} post by {{ view.kwargs.username }} {% endblock %}
+{% block title %} {% translate 'post by' %} {{ view.kwargs.username }} {% endblock %}
 {% block content %}
 <div class="border p-3 rounded mb-3 bg-light">
-    <h2>Posts by {{ view.kwargs.username }} ({{ page_obj.paginator.count }})</h2>
+    <h2>{% translate 'Posts by' %} {{ view.kwargs.username }} ({{ page_obj.paginator.count }})</h2>
 </div>
 {% for post in posts %}
     <div class="border p-3 rounded mb-3 bg-light">
@@ -26,8 +27,8 @@
     <div>
         {% if is_paginated %}
         {% if page_obj.has_previous %}
-            <a href="?page=1" class="btn btn-outline-info btn-sm ">First</a>
-            <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-outline-info btn-sm ">Previous</a>
+            <a href="?page=1" class="btn btn-outline-info btn-sm ">{% translate 'First' %}</a>
+            <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-outline-info btn-sm ">{% translate 'Previous' %}</a>
         {% endif %}
         {% for page in page_obj.paginator.page_range %}
             {% if page == page_obj.number %}
@@ -37,8 +38,8 @@
             {% endif %}
         {% endfor %}
         {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline-info btn-sm ">Next</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-outline-info btn-sm">Last</a>
+            <a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline-info btn-sm ">{% translate 'Next' %}</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-outline-info btn-sm">{% translate 'Last' %}</a>
         {% endif %}
     {% endif %}
     </div>

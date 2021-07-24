@@ -1,7 +1,10 @@
 {% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 {% url 'blog-home' as home %}
 {% url 'login' as login %}
 {% url 'register' as register %}
+
 
 <!DOCTYPE html>
 <html>
@@ -11,11 +14,14 @@
 	<title>{% block title %}{% endblock %}</title>
 	<link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
 	<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+	{% if LANGUAGE_CODE == 'fa' %}
+	<link rel="stylesheet" href="{% static 'css/custom-rtl.css' %}">
+	{% endif %}
 </head>
 <body>
 	<div class="main">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<a class="navbar-brand" href="{% url 'blog-home' %}">Django Blog</a>
+			<a class="navbar-brand" href="{% url 'blog-home' %}">{% translate 'Django Blog' %}</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			  <span class="navbar-toggler-icon"></span>
 			</button>
@@ -23,27 +29,27 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			  <ul class="navbar-nav mr-auto">
 				<li class="nav-item {% if request.path == home %} active {% endif %}">
-				  <a class="nav-link" href="{% url 'blog-home' %}">Home <span class="sr-only">(current)</span></a>
+				  <a class="nav-link" href="{% url 'blog-home' %}"> {% translate 'Home' %} <span class="sr-only">(current)</span></a>
 				</li>
 				<!-- <li class="nav-item">
 				  <a class="nav-link" href="#">About</a>
 				</li> -->
 				  {% if user.is_authenticated %}
 				  <li class="nav-item">
-					<a class="nav-link" href="{% url 'post-create' %}">New Post</a>
+					<a class="nav-link" href="{% url 'post-create' %}">{% translate 'New Post' %}</a>
 				  </li>
 				  <li class="nav-item">
 					<a class="nav-link text-info" href="{% url 'profile' %}">{{ user }}</a>
 				  </li>
 				  <li class="nav-item">
-					<a class="nav-link" href="{% url 'logout' %}">Logout</a>
+					<a class="nav-link" href="{% url 'logout' %}">{% translate 'Logout' %}</a>
 				  </li>
 				  {% else %}
 				  <li class="nav-item {% if request.path == login %} active {% endif %}">
-					<a class="nav-link" href="{% url 'login' %}">Sign In</a>
+					<a class="nav-link" href="{% url 'login' %}">{% translate 'Sign In' %}</a>
 				  </li>
 				  <li class="nav-item {% if request.path == register %} active {% endif %}">
-					  <a class="nav-link" href="{% url 'register' %}">Register</a>
+					  <a class="nav-link" href="{% url 'register' %}">{% translate 'Register' %}</a>
 					</li>
 				  {% endif %}
 			  </ul>
@@ -52,17 +58,17 @@
 		<div class="main-container">
 			<div class="p-3">
 				<div class="row">
-					<div class="col-12 col-sm-10 col-md-8 offset-sm-1 offset-md-0">
+					<div class="col-12 col-sm-10 col-md-8 offset-sm-1 offset-md-0 custom-home">
 						<div>
 							{% block content %}{% endblock %}
 						</div>
 					</div>
 					<div class="col-12 col-sm-10 col-md-4 offset-sm-1 offset-md-0">
 						<div class="sticky-top sticky-sidebar bg-light p-2 rounded">
-							<p class="text-muted ml-2">Find Me</p>
+							<p class="text-muted ml-2">{% translate 'Find Me' %}</p>
 							<ul class="list-group">
-								<li class="list-group-item"><a href="https://github.com/iamaliataie" target="_blank">Github</a></li>
-								<li class="list-group-item"><a href="https://linkedin.com/in/iamaliataie" target="_blank">LinkedIn</a></li>
+								<li class="list-group-item"><a href="https://github.com/iamaliataie" target="_blank">{% translate 'Github' %}</a></li>
+								<li class="list-group-item"><a href="https://linkedin.com/in/iamaliataie" target="_blank">{% translate 'LinkedIn' %}</a></li>
 							</ul>
 						</div>
 					</div>
@@ -70,8 +76,15 @@
 			</div>
 		</div>
 		<footer class="footer bg-light">
-			<div class="container">
-			  <span class="text-muted">Developed by Ali Ahmad Ataie</span>
+			<div class="container d-flex justify-content-between">
+			  <span class="text-muted">{% translate 'Developed by Ali Ahmad Ataie' %}</span>
+			  <div class="languages d-inline ">
+				{% if LANGUAGE_CODE == 'fa' %}
+					<a href="/en/{{ request.path|slice:'4:' }}">انگلیسی</a>
+				{% else %}
+					<a href="/fa/{{ request.path|slice:'4:' }}">Persian</a>
+				{% endif %}
+			</div>
 			</div>
 		</footer>
 	</div>

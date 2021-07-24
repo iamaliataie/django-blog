@@ -2,8 +2,9 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% load socialaccount %}
+{% load i18n %}
 
-{% block title %} Sign in {% endblock %}
+{% block title %} {% translate 'Sign in' %} {% endblock %}
 {% block content %}
 {% if messages %}
     {% for message in messages %}
@@ -16,21 +17,21 @@
     <form method="POST">
         {% csrf_token %}
         <fieldset class="form-group">
-            <legend class="border-bottom mb-4 pb-3">Sign In
-                    <a href="{% provider_login_url 'facebook'%}" class="btn btn-primary float-right">Login with Facebook</a>
+            <legend class="border-bottom mb-4 pb-3">{% translate 'Sign In' %}
+                    <a href="{% provider_login_url 'facebook'%}" class="btn btn-primary float-right facebook-login">{% translate 'Login with Facebook' %}</a>
             </legend>
             {{ form|crispy }}
         </fieldset>
         <div class="form-group">
             <button class="btn btn-outline-info" type="submit">
-                Sign In
+                {% translate 'Sign In' %}
             </button>
-            <small class="ml-2"><a href="{% url 'password_reset' %}" class="text-info">forgot your password?</a></small>
+            <small class="ml-2"><a href="{% url 'password_reset' %}" class="text-info">{% translate 'forgot your password?' %}</a></small>
         </div>
     </form>
     <div class="border-top pt-3">
         <small class="text-muted">
-            Need an account? <a href="{% url 'register' %}" class="ml-2 text-info">Sign Up</a>
+            {% translate 'Need an account?' %} <a href="{% url 'register' %}" class="ml-2 text-info">{% translate 'Sign Up' %}</a>
         </small>
         
     </div>
